@@ -4,6 +4,7 @@ import NavBar  from './components/NavBar';
 import Products from './components/Products';
 import { Product } from './models/product';
 import { useState } from 'react';
+import Cart from './components/Cart';
 
 const products: Product[] = [
   new Product(1, "Product 1", "Description 1", 0),
@@ -40,10 +41,9 @@ function App() {
 
   return (
     <>
-      {/* <h1>Cao {fullName(user)}</h1>
-      {element} */}
       <NavBar cartNum={cartNum}/>
       <Products products={products} onAdd={addToCart} />
+      <Cart/>
     </>
   )
 }
