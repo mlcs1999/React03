@@ -5,6 +5,7 @@ import Products from './components/Products';
 import { Product } from './models/product';
 import { useState } from 'react';
 import Cart from './components/Cart';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 const products: Product[] = [
   new Product(1, "Product 1", "Description 1", 0),
@@ -40,11 +41,18 @@ function App() {
   };
 
   return (
-    <>
+    <BrowserRouter>
       <NavBar cartNum={cartNum}/>
-      <Products products={products} onAdd={addToCart} />
-      <Cart/>
-    </>
+      <Routes>
+        <Route
+        path='/'
+        element={
+        <Products products={products} onAdd={addToCart} />
+        }
+        />
+        <Route path='/cart' element={<Cart/>}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
