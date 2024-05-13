@@ -5,13 +5,21 @@ import Products from './components/Products';
 import { Product } from './models/product';
 import { useState } from 'react';
 import Cart from './components/Cart';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 const products: Product[] = [
   new Product(1, "Product 1", "Description 1", 0),
   new Product(2, "Product 2", "Description 2", 0),
   new Product(3, "Product 3", "Description 3", 0)
 ];
+
 
 function App() {
 
@@ -40,20 +48,19 @@ function App() {
     });
   };
 
+  let router = createBrowserRouter(
+    createRoutesFromElements([
+      <Route path='/' element={ <NavBar cartNum={cartNum}/>}>
+        <Route path="/" element={ <Products products={products} onAdd={addToCart} />} />,
+        <Route path='cart' element={<Cart/>}/>
+      </Route>
+    ])
+);
+
+
   return (
-    <BrowserRouter>
-      <NavBar cartNum={cartNum}/>
-      <Routes>
-        <Route
-        path='/'
-        element={
-        <Products products={products} onAdd={addToCart} />
-        }
-        />
-        <Route path='/cart' element={<Cart/>}/>
-      </Routes>
-    </BrowserRouter>
-  )
+      <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />
+  );
 }
 
 export default App

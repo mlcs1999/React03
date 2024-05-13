@@ -6,6 +6,7 @@ interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = ({cartNum}) => {
   return (
+    <>
     <div className='navBar'>
         <a>My Store</a>
         <div className="cart-items">
@@ -13,6 +14,7 @@ const NavBar: React.FC<NavBarProps> = ({cartNum}) => {
           <p className="cart-num">{cartNum}</p>
         </div>
     </div>
+    </>
   )
 }
 
