@@ -9,9 +9,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
-  Routes,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 const products: Product[] = [
