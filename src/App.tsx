@@ -50,7 +50,7 @@ function App() {
     createRoutesFromElements([
       <Route path='/' element={ <NavBar cartNum={cartNum}/>}>
         <Route path="/" element={ <Products products={products} onAdd={addToCart} />} />,
-        <Route path='cart' element={<Cart/>}/>
+        <Route path='cart' element={<Cart allproducts={products} onAdd={addToCart}/>}/>
       </Route>
     ])
 );
