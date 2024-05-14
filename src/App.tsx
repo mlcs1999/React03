@@ -78,6 +78,7 @@ function App() {
     <>
       <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />
       <div>Novi element.</div>
+      <div>Element za granu tri.</div>
     </>
   );
 }
