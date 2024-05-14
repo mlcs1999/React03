@@ -75,10 +75,7 @@ function App() {
 
 
   return (
-    <>
-      <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />
-      <div>Novi element.</div>
-    </>
+    <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />
   );
 }
 
