@@ -11,7 +11,7 @@ const Cart: React.FC<CartProps> = ({ allproducts, onAdd }) => {
   return (
     <div className="cart-container">
       <h3>This is your cart.</h3>
-      {allproducts == null ? "No products in your cart" : 
+      {allproducts.length === 0 ? "No products in your cart" : 
       allproducts.map((product) => (
         <OneProduct
         key={product.id} 

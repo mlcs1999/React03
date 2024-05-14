@@ -34,6 +34,13 @@ function App() {
   }
   
   const [cartNum, setCartNum] = useState(0);
+  const [cartProducts, setCartProducts] = useState<Product[]>([]);
+
+  function refreshCart() {
+    const newProducts: Product[] = products.filter((prod) => prod.amount > 0);
+    setCartProducts(newProducts);
+  }
+
   
   const addToCart = (id: number) => {
     products.map((product) => {
@@ -44,13 +51,14 @@ function App() {
         console.log("product id=", product.id, "amount=", product.amount);
       }
     });
+    refreshCart();
   };
 
   let router = createBrowserRouter(
     createRoutesFromElements([
       <Route path='/' element={ <NavBar cartNum={cartNum}/>}>
         <Route path="/" element={ <Products products={products} onAdd={addToCart} />} />,
-        <Route path='cart' element={<Cart allproducts={products} onAdd={addToCart}/>}/>
+        <Route path='cart' element={<Cart allproducts={cartProducts} onAdd={addToCart}/>}/>
       </Route>
     ])
 );
