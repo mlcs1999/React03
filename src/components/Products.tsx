@@ -16,6 +16,7 @@ const Products: React.FC<ProductsProps> = ({ products, onAdd }) => {
         key={product.id} 
         product={product}
         onAdd={() => onAdd(product.id)}
+        inCart = {1}  
          />
       ))}
     </div>

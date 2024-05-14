@@ -17,6 +17,7 @@ const Cart: React.FC<CartProps> = ({ allproducts, onAdd }) => {
         key={product.id} 
         product={product}
         onAdd={() => onAdd(product.id)}
+        inCart={0}
          />
       ))}
     </div>
