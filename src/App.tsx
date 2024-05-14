@@ -47,7 +47,8 @@ function App() {
 
   
   const addToCart = (id: number) => {
-    products.map((product) => {
+    // products.map((product) => {
+    products.forEach((product)=>{
       if (product.id === id) {
         product.amount = product.amount + 1;
         const a = cartNum + 1;
@@ -61,7 +62,6 @@ function App() {
         }
       }
     });
-    
   };
 
   let router = createBrowserRouter(
