@@ -41,6 +41,10 @@ function App() {
     setCartProducts(newProducts);
   }
 
+  function updateCart(product: Product) {
+    setCartProducts([...cartProducts, product]);
+  }
+
   
   const addToCart = (id: number) => {
     products.map((product) => {
@@ -49,9 +53,15 @@ function App() {
         const a = cartNum + 1;
         setCartNum(a);
         console.log("product id=", product.id, "amount=", product.amount);
+        if(product.amount === 1) {
+          updateCart(product);
+        }
+        else {
+          refreshCart();
+        }
       }
     });
-    refreshCart();
+    
   };
 
   let router = createBrowserRouter(
