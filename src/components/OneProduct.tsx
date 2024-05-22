@@ -1,5 +1,6 @@
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { Product } from '../models/product';
+import { useLocation } from "react-router-dom";
 
 interface OneProductProps {
   product: Product;
@@ -10,6 +11,9 @@ interface OneProductProps {
 const OneProduct : React.FC<OneProductProps> = ({ product, onAdd, inCart }) => {
   const design = { margin: 10, borderStyle: "dashed" };
   
+  const location = useLocation();
+  console.log(location);
+
   return (
     <div className={inCart === 1 ? 'card' : 'card-cart'} style={design}>
       <img className="card-img-top" src='https://picsum.photos/200' alt='neki alt tekst' />
@@ -18,12 +22,12 @@ const OneProduct : React.FC<OneProductProps> = ({ product, onAdd, inCart }) => {
         <p className="card-text">
           {product.description}
         </p>
-        {inCart === 1 ?
+        {location.pathname === "/cart"  ?
+        <h3>Amount: {product.amount}</h3> :
         <>
           <a className="btn" onClick={() => onAdd(product.id)}><FaPlus/></a>
           <a className="btn"><FaMinus/></a>
-        </> :
-        <h3>Amount: {product.amount}</h3>
+        </>
         }
       </div>
     </div>
